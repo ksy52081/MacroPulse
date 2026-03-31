@@ -43,7 +43,7 @@ try:
     # --- 데이터 정리 (총 11개 컬럼) ---
     # 순서: 날짜, 장단기, 기대인플레, 신용스프레드, 구리/금, 시장금리프록시, 실질금리, 산업생산, 삼법칙, 달러인덱스, 유가
     row = [
-        now, yield_curve, bei_5y, credit_spread, copper_gold, rate_proxy,
+        date, yield_curve, bei_5y, credit_spread, copper_gold, rate_proxy,
         real_rate, ind_prod, sahm_rule, dxy, wti_oil
     ]
 
