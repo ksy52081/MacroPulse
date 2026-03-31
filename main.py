@@ -12,7 +12,7 @@ gcp_json = json.loads(os.environ['GCP_JSON_KEY'])
 
 # 2. 데이터 수집 (FRED & Yahoo Finance)
 fred = Fred(api_key=fred_key)
-now = datetime.now().strftime('%Y-%m-%d')
+date = datetime.now().strftime('%Y-%m-%d')
 
 try:
     # --- [기존 지표] ---
@@ -43,7 +43,7 @@ try:
     # --- 데이터 정리 (총 11개 컬럼) ---
     # 순서: 날짜, 장단기, 기대인플레, 신용스프레드, 구리/금, 시장금리프록시, 실질금리, 산업생산, 삼법칙, 달러인덱스, 유가
     row = [
-        date, yield_curve, bei_5y, credit_spread, copper_gold, rate_proxy,
+        now, yield_curve, bei_5y, credit_spread, copper_gold, rate_proxy,
         real_rate, ind_prod, sahm_rule, dxy, wti_oil
     ]
 
@@ -56,7 +56,7 @@ try:
     wks = sh.get_worksheet(0)
     wks.append_row(row)
     
-    print(f"✅ {now} 데이터 적재 완료! (총 {len(row)-1}개 지표)")
+    print(f"✅ {date} 데이터 적재 완료! (총 {len(row)-1}개 지표)")
 
 except Exception as e:
     print(f"❌ 오류 발생: {e}")
