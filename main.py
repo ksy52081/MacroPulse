@@ -8,6 +8,8 @@ from fredapi import Fred
 from datetime import datetime
 from google.oauth2.service_account import Credentials
 from dotenv import load_dotenv
+from alarm import send_telegram_message
+
 
 load_dotenv()
 
@@ -88,6 +90,7 @@ try:
     wks.append_row(row)
 
     print(f"✅ {date} 데이터 적재 완료! (총 {len(row)-1}개 지표)")
+    send_telegram_message("✅ 데이터 적재 완료!")
 
 except Exception as e:
     print(f"❌ 오류 발생: {e}")
